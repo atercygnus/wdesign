@@ -133,6 +133,7 @@ begin
   dmMain.vwServicesOrdered.Open;
   dmMain.vwCustomers.Open;
   dmMain.tbOrderStatuses.Open;
+  //mycode
 end;
 
 end.

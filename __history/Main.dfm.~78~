@@ -33,7 +33,6 @@ object fmMain: TfmMain
       TabOrder = 0
       object viwOrders: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
-        DataController.DataSource = dmMain.dsOrders
         DataController.DetailKeyFieldNames = 'order_id'
         DataController.KeyFieldNames = 'order_id'
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -43,6 +42,7 @@ object fmMain: TfmMain
         OptionsData.Editing = False
         OptionsData.Inserting = False
         OptionsView.CellEndEllipsis = True
+        OptionsView.CellAutoHeight = True
         OptionsView.ColumnAutoWidth = True
         OptionsView.GroupByBox = False
         object viwOrdersorder_id: TcxGridDBColumn
@@ -56,33 +56,39 @@ object fmMain: TfmMain
           DataBinding.FieldName = 'customer_name'
           HeaderAlignmentHorz = taCenter
           Options.Sorting = False
-          Width = 217
+          Width = 135
+        end
+        object viwOrdersaddress: TcxGridDBColumn
+          DataBinding.FieldName = 'address'
+          HeaderAlignmentHorz = taCenter
+          Width = 155
         end
         object viwOrderscomment: TcxGridDBColumn
           DataBinding.FieldName = 'comment'
           PropertiesClassName = 'TcxMemoProperties'
+          Properties.ReadOnly = True
+          Properties.ScrollBars = ssBoth
           HeaderAlignmentHorz = taCenter
-          Width = 213
+          Width = 233
         end
         object viwOrdersstatus_name: TcxGridDBColumn
           DataBinding.FieldName = 'status_name'
           HeaderAlignmentHorz = taCenter
-          Width = 240
+          Width = 265
         end
         object viwOrdersdue_date: TcxGridDBColumn
           DataBinding.FieldName = 'due_date'
           HeaderAlignmentHorz = taCenter
-          Width = 205
+          Width = 81
         end
         object viwOrderstotal_cost: TcxGridDBColumn
           DataBinding.FieldName = 'total_cost'
           HeaderAlignmentHorz = taCenter
-          Width = 203
+          Width = 209
         end
       end
       object viwServicesOrdered: TcxGridDBBandedTableView
         Navigator.Buttons.CustomButtons = <>
-        DataController.DataSource = dmMain.srcServicesOrdered
         DataController.DetailKeyFieldNames = 'order_id'
         DataController.KeyFieldNames = 'ord_svc_id'
         DataController.MasterKeyFieldNames = 'order_id'
@@ -262,6 +268,10 @@ object fmMain: TfmMain
         item
           Visible = True
           ItemName = 'btnCreateOrderPosition'
+        end
+        item
+          Visible = True
+          ItemName = 'btnEditCustomers'
         end>
       NotDocking = [dsNone, dsLeft, dsRight, dsBottom]
       OneOnRow = True
@@ -280,6 +290,11 @@ object fmMain: TfmMain
       Action = actNewServiceOrder
       Category = 0
       LargeImageIndex = 1
+    end
+    object btnEditCustomers: TdxBarButton
+      Action = actEditCustomers
+      Category = 0
+      LargeImageIndex = 3
     end
   end
   object imlMain: TcxImageList
@@ -823,14 +838,18 @@ object fmMain: TfmMain
   end
   object actMain: TActionList
     Left = 432
-    Top = 416
+    Top = 424
     object actNewOrder: TAction
-      Caption = 'actCreateOrder'
+      Caption = 'Create Order'
       OnExecute = actNewOrderExecute
     end
     object actNewServiceOrder: TAction
-      Caption = 'actNewOrderPosition'
+      Caption = 'New Order Position'
       OnExecute = actNewServiceOrderExecute
+    end
+    object actEditCustomers: TAction
+      Caption = 'Edit Customers'
+      OnExecute = actEditCustomersExecute
     end
   end
 end

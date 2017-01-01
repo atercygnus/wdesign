@@ -25,8 +25,8 @@ uses
   dxLayoutContainer, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
   cxGridLevel, cxClasses, cxGridCustomView, cxGrid, dxLayoutControl,
   dxSkinsdxBarPainter, System.ImageList, Vcl.ImgList, dxBar, System.Actions,
-  Vcl.ActnList, cxDBLookupComboBox, MainDM, cxGridBandedTableView,
-  cxGridDBBandedTableView;
+  Vcl.ActnList, cxDBLookupComboBox, cxGridBandedTableView,
+  cxGridDBBandedTableView, MainDM, cxMemo, cxTextEdit, cxRichEdit;
 
 type
   TfmMain = class(TForm)
@@ -63,9 +63,13 @@ type
     viwServicesOrderedprice_per_unit: TcxGridDBBandedColumn;
     viwServicesOrderedtotal_price: TcxGridDBBandedColumn;
     btnCreateOrderPosition: TdxBarButton;
+    viwOrdersaddress: TcxGridDBColumn;
+    actEditCustomers: TAction;
+    btnEditCustomers: TdxBarButton;
     procedure actNewOrderExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure actNewServiceOrderExecute(Sender: TObject);
+    procedure actEditCustomersExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,7 +84,19 @@ implementation
 {$R *.dfm}
 
 uses
-  NewOrder, CreateOrder;
+  NewOrder, NewOrderPosition, Customers;
+
+procedure TfmMain.actEditCustomersExecute(Sender: TObject);
+var
+  fm: TfmCustomers;
+begin
+  fm := TfmCustomers.Create(Self);
+  try
+    fm.ShowModal;
+  finally
+    FreeAndNil(fm);
+  end;
+end;
 
 procedure TfmMain.actNewOrderExecute(Sender: TObject);
 var
@@ -90,19 +106,24 @@ begin
   try
     fm.ShowModal;
     if fm.ModalResult = mrOK then
-    begin
-      if dmMain.vwOrders.Active then
-        dmMain.vwOrders.Close;
-      dmMain.vwOrders.Open;
-    end;
+      dmMain.vwOrders.Refresh;
   finally
     FreeAndNil(fm);
   end;
 end;
 
 procedure TfmMain.actNewServiceOrderExecute(Sender: TObject);
+var
+  fm: TfmNewOrderPosition;
 begin
- //
+  fm := TfmNewOrderPosition.Create(Self);
+  try
+    fm.ShowModal;
+    if fm.ModalResult = mrOK then
+      dmMain.vwServicesOrdered.Refresh;
+  finally
+    FreeAndNil(fm);
+  end;
 end;
 
 procedure TfmMain.FormCreate(Sender: TObject);
@@ -110,7 +131,7 @@ begin
   dmMain := TdmMain.Create(Self);
   dmMain.vwOrders.Open;
   dmMain.vwServicesOrdered.Open;
-  dmMain.tbCustomers.Open;
+  dmMain.vwCustomers.Open;
   dmMain.tbOrderStatuses.Open;
 end;
 
