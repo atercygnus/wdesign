@@ -1,0 +1,56 @@
+object fmLibrary: TfmLibrary
+  Left = 0
+  Top = 0
+  Caption = 'fmLibrary'
+  ClientHeight = 495
+  ClientWidth = 1044
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object dxLayoutControl1: TdxLayoutControl
+    Left = 0
+    Top = 0
+    Width = 969
+    Height = 449
+    TabOrder = 0
+    object cxGrid1: TcxGrid
+      Left = 10
+      Top = 10
+      Width = 919
+      Height = 415
+      TabOrder = 0
+      object cxGrid1DBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsView.GroupByBox = False
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = cxGrid1DBTableView1
+      end
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      ButtonOptions.Buttons = <>
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutControl1Group_Root
+      CaptionOptions.Text = 'cxGrid1'
+      CaptionOptions.Visible = False
+      Control = cxGrid1
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+  end
+end

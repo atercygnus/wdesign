@@ -1,0 +1,137 @@
+inherited fmNewOrderPosition: TfmNewOrderPosition
+  Caption = 'New Ordered Service'
+  Position = poScreenCenter
+  ExplicitWidth = 639
+  ExplicitHeight = 534
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited dxLayoutControl1: TdxLayoutControl
+    inherited cxButton1: TcxButton
+      Left = 162
+      Top = 118
+      TabOrder = 4
+      ExplicitLeft = 162
+      ExplicitTop = 118
+    end
+    inherited cxButton2: TcxButton
+      Left = 243
+      Top = 118
+      TabOrder = 5
+      ExplicitLeft = 243
+      ExplicitTop = 118
+    end
+    object edtPrice: TcxLookupComboBox [2]
+      Left = 68
+      Top = 10
+      Properties.KeyFieldNames = 'price_id'
+      Properties.ListColumns = <
+        item
+          FieldName = 'price_name'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = dmMain.dsServicePrices
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      Style.PopupBorderStyle = epbsFrame3D
+      TabOrder = 0
+      Width = 145
+    end
+    object edtOrder: TcxLookupComboBox [3]
+      Left = 68
+      Top = 64
+      Properties.KeyFieldNames = 'order_id'
+      Properties.ListColumns = <
+        item
+          FieldName = 'address'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = dmMain.dsOrders
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      Style.PopupBorderStyle = epbsFrame3D
+      TabOrder = 2
+      Width = 250
+    end
+    object edtQuantity: TcxSpinEdit [4]
+      Left = 68
+      Top = 37
+      Properties.AssignedValues.MinValue = True
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      TabOrder = 1
+      Width = 121
+    end
+    object edtEstimation: TcxSpinEdit [5]
+      Left = 68
+      Top = 91
+      Properties.AssignedValues.MinValue = True
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      TabOrder = 3
+      Width = 121
+    end
+    inherited dxLayoutControl1Group_Root: TdxLayoutGroup
+      Index = -1
+    end
+    inherited grpControls: TdxLayoutGroup
+      ShowBorder = False
+      Index = 0
+    end
+    inherited grpButtons: TdxLayoutGroup
+      Index = 1
+    end
+    inherited dxLayoutItem1: TdxLayoutItem
+      Index = 0
+    end
+    inherited dxLayoutItem2: TdxLayoutItem
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Price:'
+      Control = edtPrice
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Order:'
+      Control = edtOrder
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Quantity:'
+      Control = edtQuantity
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Estimation:'
+      Control = edtEstimation
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+  end
+  inherited actMain: TActionList
+    Left = 136
+    Top = 192
+    inherited actConfirm: TAction
+      OnUpdate = actConfirmUpdate
+    end
+  end
+end

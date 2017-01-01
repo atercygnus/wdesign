@@ -1,0 +1,64 @@
+unit MainDM;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, ZAbstractRODataset,
+  ZAbstractDataset, ZStoredProcedure, ZAbstractConnection, ZConnection,
+  PSQLDbTables;
+
+type
+  TdmMain = class(TDataModule)
+    vwOrders: TPSQLTable;
+    dbMain: TPSQLDatabase;
+    dsOrders: TDataSource;
+    vwUpdateOrders: TPSQLUpdateSQL;
+    vwOrdersorder_id: TIntegerField;
+    vwOrderscustomer_name: TWideMemoField;
+    vwOrderscomment: TWideStringField;
+    vwOrdersstatus_name: TWideStringField;
+    vwOrdersdue_date: TDateField;
+    vwOrderstotal_cost: TFloatField;
+    tbCustomers: TPSQLTable;
+    srcCustomers: TDataSource;
+    stpAddOrder: TPSQLStoredProc;
+    tbOrderStatuses: TPSQLTable;
+    srcOrderStatuses: TDataSource;
+    tbOrderStatusesstatus_id: TAutoIncField;
+    tbOrderStatusesname: TWideStringField;
+    tbCustomerscustomer_id: TIntegerField;
+    tbCustomersfull_name: TWideMemoField;
+    tbCustomersphone_number: TWideStringField;
+    tbCustomersemail: TWideStringField;
+    tbCustomersfactor: TFloatField;
+    vwServicesOrdered: TPSQLTable;
+    srcServicesOrdered: TDataSource;
+    vwServicesOrderedord_svc_id: TIntegerField;
+    vwServicesOrderedservice_id: TIntegerField;
+    vwServicesOrderedprice_id: TIntegerField;
+    vwServicesOrderedquantity: TWideMemoField;
+    vwServicesOrderedorder_id: TIntegerField;
+    vwServicesOrderedstatus_id: TIntegerField;
+    vwServicesOrderedestimation: TFloatField;
+    vwServicesOrderedstatus_name: TWideStringField;
+    vwServicesOrderedprice_per_unit: TFloatField;
+    vwServicesOrderedtotal_price: TFloatField;
+    vwServicesOrderedservice_name: TWideStringField;
+    vwServicePrices: TPSQLTable;
+    dsServicePrices: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dmMain: TdmMain;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,147 @@
+inherited fmNewCustomer: TfmNewCustomer
+  Caption = 'New Customer'
+  ExplicitWidth = 639
+  ExplicitHeight = 534
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited dxLayoutControl1: TdxLayoutControl
+    inherited cxButton1: TcxButton
+      Left = 61
+      Top = 172
+      TabOrder = 6
+      ExplicitLeft = 61
+      ExplicitTop = 172
+    end
+    inherited cxButton2: TcxButton
+      Left = 142
+      Top = 172
+      TabOrder = 7
+      ExplicitLeft = 142
+      ExplicitTop = 172
+    end
+    object cxMaskEdit1: TcxMaskEdit [2]
+      Left = 72
+      Top = 10
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      TabOrder = 0
+      Text = 'cxMaskEdit1'
+      Width = 121
+    end
+    object cxMaskEdit2: TcxMaskEdit [3]
+      Left = 72
+      Top = 37
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      TabOrder = 1
+      Text = 'cxMaskEdit2'
+      Width = 121
+    end
+    object cxMaskEdit3: TcxMaskEdit [4]
+      Left = 72
+      Top = 64
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      TabOrder = 2
+      Text = 'cxMaskEdit3'
+      Width = 121
+    end
+    object cxMaskEdit4: TcxMaskEdit [5]
+      Left = 72
+      Top = 91
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      TabOrder = 3
+      Text = 'cxMaskEdit4'
+      Width = 121
+    end
+    object cxSpinEdit1: TcxSpinEdit [6]
+      Left = 72
+      Top = 118
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      TabOrder = 4
+      Width = 121
+    end
+    object cxLookupComboBox1: TcxLookupComboBox [7]
+      Left = 72
+      Top = 145
+      Properties.ListColumns = <>
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      Style.PopupBorderStyle = epbsFrame3D
+      TabOrder = 5
+      Width = 145
+    end
+    inherited dxLayoutControl1Group_Root: TdxLayoutGroup
+      Index = -1
+    end
+    inherited grpControls: TdxLayoutGroup
+      ShowBorder = False
+      Index = 0
+    end
+    inherited grpButtons: TdxLayoutGroup
+      Index = 1
+    end
+    inherited dxLayoutItem1: TdxLayoutItem
+      Index = 0
+    end
+    inherited dxLayoutItem2: TdxLayoutItem
+      Index = 1
+    end
+    object itmFirstName: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.Text = 'First name:'
+      Control = cxMaskEdit1
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itmLastName: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.Text = 'Last name:'
+      Control = cxMaskEdit2
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itmPhone: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.Text = 'Phone num:'
+      Control = cxMaskEdit3
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itmEmail: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.Text = 'Email:'
+      Control = cxMaskEdit4
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object itmFactor: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.Text = 'Factor:'
+      Control = cxSpinEdit1
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object itmAttractedThrough: TdxLayoutItem
+      Parent = grpControls
+      CaptionOptions.Text = 'Attracted:'
+      Control = cxLookupComboBox1
+      ControlOptions.ShowBorder = False
+      Index = 5
+    end
+  end
+  inherited actMain: TActionList
+    Left = 248
+    Top = 72
+  end
+end

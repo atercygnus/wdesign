@@ -1,0 +1,22 @@
+inherited vfmCreateEdit1: TvfmCreateEdit1
+  Caption = 'vfmCreateEdit1'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited dxLayoutControl1: TdxLayoutControl
+    inherited dxLayoutControl1Group_Root: TdxLayoutGroup
+      Index = -1
+    end
+    inherited grpControls: TdxLayoutGroup
+      Index = 0
+    end
+    inherited grpButtons: TdxLayoutGroup
+      Index = 1
+    end
+    inherited dxLayoutItem1: TdxLayoutItem
+      Index = 0
+    end
+    inherited dxLayoutItem2: TdxLayoutItem
+      Index = 1
+    end
+  end
+end

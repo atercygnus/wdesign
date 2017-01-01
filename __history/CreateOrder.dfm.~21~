@@ -1,0 +1,183 @@
+object fmCreateOrder: TfmCreateOrder
+  Left = 0
+  Top = 0
+  AutoSize = True
+  Caption = 'New Order'
+  ClientHeight = 443
+  ClientWidth = 561
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object dxLayoutControl1: TdxLayoutControl
+    Left = 0
+    Top = 0
+    Width = 561
+    Height = 443
+    TabOrder = 0
+    AutoSize = True
+    object cxButton2: TcxButton
+      Left = 175
+      Top = 186
+      Width = 75
+      Height = 25
+      Action = actCancel
+      TabOrder = 5
+    end
+    object cxButton1: TcxButton
+      Left = 94
+      Top = 186
+      Width = 75
+      Height = 25
+      Action = actCreateOrder
+      TabOrder = 4
+    end
+    object edtCustomer: TcxLookupComboBox
+      Left = 65
+      Top = 10
+      Properties.KeyFieldNames = 'customer_id'
+      Properties.ListColumns = <
+        item
+          FieldName = 'full_name'
+        end>
+      Properties.ListSource = dmMain.srcCustomers
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      Style.PopupBorderStyle = epbsFrame3D
+      TabOrder = 0
+      Width = 145
+    end
+    object edtDueDate: TcxDateEdit
+      Left = 65
+      Top = 64
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      Style.PopupBorderStyle = epbsFrame3D
+      TabOrder = 2
+      Width = 121
+    end
+    object edtComment: TcxMemo
+      Left = 65
+      Top = 91
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      TabOrder = 3
+      Height = 89
+      Width = 185
+    end
+    object edtStatus: TcxLookupComboBox
+      Left = 65
+      Top = 37
+      Properties.KeyFieldNames = 'status_id'
+      Properties.ListColumns = <
+        item
+          FieldName = 'name'
+        end>
+      Properties.ListSource = dmMain.srcOrderStatuses
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      Style.PopupBorderStyle = epbsFrame3D
+      TabOrder = 1
+      Width = 145
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      ButtonOptions.Buttons = <>
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object grpOrder: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'New Order'
+      ButtonOptions.Buttons = <>
+      ShowBorder = False
+      Index = 0
+    end
+    object grpButtons: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahRight
+      CaptionOptions.Text = 'New Group'
+      ButtonOptions.Buttons = <>
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = grpButtons
+      CaptionOptions.Text = 'cxButton2'
+      CaptionOptions.Visible = False
+      Control = cxButton2
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = grpButtons
+      AlignVert = avClient
+      CaptionOptions.Text = 'cxButton1'
+      CaptionOptions.Visible = False
+      Control = cxButton1
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itmCustomer: TdxLayoutItem
+      Parent = grpOrder
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Customer:'
+      Control = edtCustomer
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itmDueDate: TdxLayoutItem
+      Parent = grpOrder
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Due Date:'
+      Control = edtDueDate
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itmComment: TdxLayoutItem
+      Parent = grpOrder
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Comment:'
+      Control = edtComment
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object itmStatus: TdxLayoutItem
+      Parent = grpOrder
+      CaptionOptions.AlignHorz = taRightJustify
+      CaptionOptions.Text = 'Status:'
+      Control = edtStatus
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+  end
+  object actMain: TActionList
+    Left = 168
+    Top = 224
+    object actCreateOrder: TAction
+      Caption = 'New order'
+      OnExecute = actCreateOrderExecute
+    end
+    object actCancel: TAction
+      Caption = 'actCancel'
+      OnExecute = actCancelExecute
+    end
+  end
+end

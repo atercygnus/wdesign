@@ -1,0 +1,23 @@
+program WDESIGN;
+
+uses
+  Vcl.Forms,
+  Main in 'Main.pas' {fmMain},
+  MainDM in 'MainDM.pas' {DataModule1: TDataModule},
+  Libraries in 'Libraries.pas' {fmLibrary},
+  CreateOrder in 'CreateOrder.pas' {fmCreateOrder},
+  CreateEdit in 'CreateEdit.pas' {vfmCreateEdit},
+  NewOrder in 'NewOrder.pas' {vfmCreateEdit1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfmMain, fmMain);
+  Application.CreateForm(TfmLibrary, fmLibrary);
+  Application.CreateForm(TfmCreateOrder, fmCreateOrder);
+  Application.CreateForm(TvfmCreateEdit, vfmCreateEdit);
+  Application.CreateForm(TvfmCreateEdit1, vfmCreateEdit1);
+  Application.Run;
+end.
