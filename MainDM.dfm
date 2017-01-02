@@ -9,7 +9,7 @@ object dmMain: TdmMain
     TableName = '"core"."vw_current_orders"'
     UpdateObject = vwUpdateOrders
     Left = 88
-    Top = 88
+    Top = 96
     object vwOrdersorder_id: TIntegerField
       FieldName = 'order_id'
     end
@@ -69,8 +69,8 @@ object dmMain: TdmMain
       '    2,'
       '    :due_date,'
       '    :comment)')
-    Left = 312
-    Top = 88
+    Left = 248
+    Top = 96
   end
   object vwCustomers: TPSQLTable
     Database = dbMain
@@ -78,7 +78,7 @@ object dmMain: TdmMain
     Options = [dsoUseGUIDField]
     TableName = '"core"."vw_customers"'
     Left = 88
-    Top = 136
+    Top = 144
     object vwCustomerscustomer_id: TIntegerField
       FieldName = 'customer_id'
     end
@@ -99,7 +99,7 @@ object dmMain: TdmMain
       FieldName = 'factor'
     end
   end
-  object srcCustomers: TDataSource
+  object dsCustomers: TDataSource
     DataSet = vwCustomers
     Left = 168
     Top = 144
@@ -143,7 +143,7 @@ object dmMain: TdmMain
     Options = [dsoUseGUIDField]
     TableName = '"core"."order_statuses"'
     Left = 88
-    Top = 184
+    Top = 192
     object tbOrderStatusesstatus_id: TAutoIncField
       FieldName = 'status_id'
     end
@@ -153,7 +153,7 @@ object dmMain: TdmMain
       Size = 255
     end
   end
-  object srcOrderStatuses: TDataSource
+  object dsOrderStatuses: TDataSource
     DataSet = tbOrderStatuses
     Left = 168
     Top = 200
@@ -164,7 +164,7 @@ object dmMain: TdmMain
     Options = [dsoUseGUIDField]
     TableName = '"core"."vw_services_ordered"'
     Left = 88
-    Top = 232
+    Top = 240
     object vwServicesOrderedservice_name: TWideStringField
       DisplayLabel = 'Service name'
       FieldName = 'service_name'
@@ -214,7 +214,7 @@ object dmMain: TdmMain
       FieldName = 'total_price'
     end
   end
-  object srcServicesOrdered: TDataSource
+  object dsServicesOrdered: TDataSource
     DataSet = vwServicesOrdered
     Left = 168
     Top = 248
@@ -225,7 +225,7 @@ object dmMain: TdmMain
     Options = [dsoUseGUIDField]
     TableName = '"core"."vw_service_prices"'
     Left = 88
-    Top = 296
+    Top = 304
     object vwServicePricesprice_id: TIntegerField
       FieldName = 'price_id'
     end
@@ -331,5 +331,97 @@ object dmMain: TdmMain
       end>
     Left = 496
     Top = 120
+  end
+  object tbCustomers: TPSQLTable
+    Database = dbMain
+    Active = True
+    Options = [dsoUseGUIDField]
+    TableName = '"core"."customers"'
+    Left = 248
+    Top = 144
+    object tbCustomerscustomer_id: TAutoIncField
+      FieldName = 'customer_id'
+    end
+    object tbCustomersfirst_name: TWideStringField
+      FieldName = 'first_name'
+      Required = True
+      Size = 255
+    end
+    object tbCustomerslast_name: TWideStringField
+      FieldName = 'last_name'
+      Required = True
+      Size = 255
+    end
+    object tbCustomersphone_number: TWideStringField
+      FieldName = 'phone_number'
+      Size = 15
+    end
+    object tbCustomersemail: TWideStringField
+      FieldName = 'email'
+      Size = 255
+    end
+    object tbCustomersfactor: TFloatField
+      FieldName = 'factor'
+      Required = True
+    end
+    object tbCustomersattracted_through: TIntegerField
+      FieldName = 'attracted_through'
+    end
+    object tbCustomersattracted_by: TIntegerField
+      FieldName = 'attracted_by'
+    end
+  end
+  object srcCustomers: TDataSource
+    DataSet = tbCustomers
+    Left = 320
+    Top = 144
+  end
+  object stpMakeCustomer: TPSQLStoredProc
+    Database = dbMain
+    Options = [dsoUseGUIDField]
+    StoredProcName = 'core.make_customer'
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'p_customer_id'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_first_name'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_last_name'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_phone_number'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'p_email'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftFloat
+        Name = 'p_factor'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_attracted_through'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_attracted_by'
+        ParamType = ptInput
+      end>
+    Left = 560
+    Top = 136
   end
 end

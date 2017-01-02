@@ -46,6 +46,7 @@ type
     FCustomerID: Variant;
   public
     { Public declarations }
+    property CustomerID: Variant read FCustomerID write FCustomerID;
   end;
 
 var
@@ -57,8 +58,10 @@ implementation
 
 procedure TfmCustomer.actConfirmExecute(Sender: TObject);
 begin
-  with dmMain.stpNewCustomer do
+  with dmMain.stpMakeCustomer do
   begin
+    ParamByName('P_CUSTOMER_ID').Value :=
+      FCustomerID;
     ParamByName('P_FIRST_NAME').Value :=
       edtFirstName.EditText;
     ParamByName('P_LAST_NAME').Value :=

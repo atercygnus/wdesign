@@ -1,8 +1,6 @@
 inherited fmCustomer: TfmCustomer
   Caption = 'Customer'
   Position = poMainFormCenter
-  ExplicitWidth = 639
-  ExplicitHeight = 534
   PixelsPerInch = 96
   TextHeight = 13
   inherited dxLayoutControl1: TdxLayoutControl
@@ -24,7 +22,7 @@ inherited fmCustomer: TfmCustomer
       Left = 72
       Top = 10
       Properties.MaskKind = emkRegExprEx
-      Properties.EditMask = '['#1072'-'#1103#1040'-'#1071']+'
+      Properties.EditMask = '['#1072'-'#1103#1040'-'#1071'a-zA-Z]+'
       Style.BorderColor = clWindowFrame
       Style.BorderStyle = ebs3D
       Style.HotTrack = False
@@ -35,7 +33,7 @@ inherited fmCustomer: TfmCustomer
       Left = 72
       Top = 37
       Properties.MaskKind = emkRegExprEx
-      Properties.EditMask = '['#1072'-'#1103#1040'-'#1071']+'
+      Properties.EditMask = '['#1072'-'#1103#1040'-'#1071'a-zA-Z]+'
       Style.BorderColor = clWindowFrame
       Style.BorderStyle = ebs3D
       Style.HotTrack = False

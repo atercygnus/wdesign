@@ -29,18 +29,20 @@ uses
 
 type
   TfmCustomers = class(TfmLibrary)
-    cxGrid1DBTableView1customer_id: TcxGridDBColumn;
-    cxGrid1DBTableView1full_name: TcxGridDBColumn;
-    cxGrid1DBTableView1phone_number: TcxGridDBColumn;
-    cxGrid1DBTableView1email: TcxGridDBColumn;
-    cxGrid1DBTableView1factor: TcxGridDBColumn;
+    colCustomerID: TcxGridDBColumn;
+    colFullName: TcxGridDBColumn;
+    colPhoneNumber: TcxGridDBColumn;
+    colEmail: TcxGridDBColumn;
+    colFactor: TcxGridDBColumn;
     bmrMain: TdxBarManager;
     bmrMainBar1: TdxBar;
     btnAddCustomer: TdxBarButton;
     imgMain: TcxImageList;
+    actNewCustomer: TAction;
     actEditCustomer: TAction;
+    procedure actNewCustomerExecute(Sender: TObject);
     procedure actEditCustomerExecute(Sender: TObject);
-    procedure cxGrid1DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+    procedure viwLibraryCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
   private
@@ -59,7 +61,7 @@ implementation
 uses
   Customer;
 
-procedure TfmCustomers.actEditCustomerExecute(Sender: TObject);
+procedure TfmCustomers.actNewCustomerExecute(Sender: TObject);
 var
   fm: TfmCustomer;
 begin
@@ -74,22 +76,54 @@ begin
   end;
 end;
 
-procedure TfmCustomers.cxGrid1DBTableView1CellDblClick(
-  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
-  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+procedure TfmCustomers.viwLibraryCellDblClick(Sender: TcxCustomGridTableView;
+  ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+  AShift: TShiftState; var AHandled: Boolean);
+begin
+  inherited;
+  actEditCustomerExecute(Self);
+end;
+
+procedure TfmCustomers.actEditCustomerExecute(Sender: TObject);
 var
   fm: TfmCustomer;
+  bmk: TBookMark;
+  customer_id: Integer;
 begin
   inherited;
 
-  fm := TfmCustomer.Create(Self);
-  try
-    fm.edtFirstName.EditValue :=
-    fm.ShowModal;
-  finally
-    FreeAndNil(fm);
-  end;
+  customer_id := viwLibrary.DataController.Values[
+    viwLibrary.DataController.FocusedRowIndex,
+    colCustomerID.Index];
 
+  dmMain.tbCustomers.Refresh;
+  bmk := dmMain.tbCustomers.GetBookmark;
+  try
+    if not dmMain.tbCustomers.Locate('CUSTOMER_ID', customer_id, []) then
+      MessageDlg(resUnknownError, mtError, [mbOK], 0);
+    fm := TfmCustomer.Create(Self);
+    try
+      fm.CustomerID := customer_id;
+      fm.edtFirstName.EditValue :=
+        dmMain.tbCustomers.FieldByName('FIRST_NAME').Value;
+      fm.edtLastName.EditValue :=
+        dmMain.tbCustomers.FieldByName('LAST_NAME').Value;
+      fm.edtPhone.EditValue :=
+        dmMain.tbCustomers.FieldByName('PHONE_NUMBER').Value;
+      fm.edtEmail.EditValue :=
+        dmMain.tbCustomers.FieldByName('EMAIL').Value;
+      fm.edtFactor.EditValue :=
+        dmMain.tbCustomers.FieldByName('FACTOR').Value;
+      fm.ShowModal;
+    finally
+      FreeAndNil(fm);
+      dmMain.vwCustomers.Refresh;
+      dmMain.tbCustomers.Refresh;
+    end;
+  finally
+    if dmMain.tbCustomers.BookmarkValid(bmk) then
+      dmMain.tbCustomers.GotoBookmark(bmk);
+  end;
 end;
 
 end.

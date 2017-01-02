@@ -20,10 +20,10 @@ type
     vwOrdersdue_date: TDateField;
     vwOrderstotal_cost: TFloatField;
     vwCustomers: TPSQLTable;
-    srcCustomers: TDataSource;
+    dsCustomers: TDataSource;
     stpAddOrder: TPSQLStoredProc;
     tbOrderStatuses: TPSQLTable;
-    srcOrderStatuses: TDataSource;
+    dsOrderStatuses: TDataSource;
     tbOrderStatusesstatus_id: TAutoIncField;
     tbOrderStatusesname: TWideStringField;
     vwCustomerscustomer_id: TIntegerField;
@@ -32,7 +32,7 @@ type
     vwCustomersemail: TWideStringField;
     vwCustomersfactor: TFloatField;
     vwServicesOrdered: TPSQLTable;
-    srcServicesOrdered: TDataSource;
+    dsServicesOrdered: TDataSource;
     vwServicesOrderedord_svc_id: TIntegerField;
     vwServicesOrderedservice_id: TIntegerField;
     vwServicesOrderedprice_id: TIntegerField;
@@ -56,11 +56,25 @@ type
     stpNewOrderPosition: TPSQLStoredProc;
     vwOrdersaddress: TWideStringField;
     stpNewCustomer: TPSQLStoredProc;
+    tbCustomers: TPSQLTable;
+    srcCustomers: TDataSource;
+    tbCustomerscustomer_id: TAutoIncField;
+    tbCustomersfirst_name: TWideStringField;
+    tbCustomerslast_name: TWideStringField;
+    tbCustomersphone_number: TWideStringField;
+    tbCustomersemail: TWideStringField;
+    tbCustomersfactor: TFloatField;
+    tbCustomersattracted_through: TIntegerField;
+    tbCustomersattracted_by: TIntegerField;
+    stpMakeCustomer: TPSQLStoredProc;
   private
     { Private declarations }
   public
     { Public declarations }
   end;
+
+resourcestring
+  resUnknownError = 'Unknown error occured. Contact Arseniy.';
 
 var
   dmMain: TdmMain;

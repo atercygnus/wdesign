@@ -27,7 +27,7 @@ inherited fmNewOrder: TfmNewOrder
           FieldName = 'full_name'
         end>
       Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = dmMain.srcCustomers
+      Properties.ListSource = dmMain.dsCustomers
       Style.BorderColor = clWindowFrame
       Style.BorderStyle = ebs3D
       Style.HotTrack = False
@@ -45,7 +45,7 @@ inherited fmNewOrder: TfmNewOrder
           FieldName = 'name'
         end>
       Properties.ListOptions.ShowHeader = False
-      Properties.ListSource = dmMain.srcOrderStatuses
+      Properties.ListSource = dmMain.dsOrderStatuses
       Style.BorderColor = clWindowFrame
       Style.BorderStyle = ebs3D
       Style.HotTrack = False

@@ -3,6 +3,7 @@ inherited fmCustomers: TfmCustomers
   ClientHeight = 499
   ClientWidth = 983
   Position = poMainFormCenter
+  ExplicitLeft = -192
   ExplicitWidth = 999
   ExplicitHeight = 538
   PixelsPerInch = 96
@@ -21,27 +22,27 @@ inherited fmCustomers: TfmCustomers
       ExplicitWidth = 943
       ExplicitHeight = 423
       inherited viwLibrary: TcxGridDBTableView
-        OnCellDblClick = cxGrid1DBTableView1CellDblClick
-        DataController.DataSource = dmMain.srcCustomers
-        object cxGrid1DBTableView1customer_id: TcxGridDBColumn
+        OnCellDblClick = viwLibraryCellDblClick
+        DataController.DataSource = dmMain.dsCustomers
+        object colCustomerID: TcxGridDBColumn
           DataBinding.FieldName = 'customer_id'
           Visible = False
           VisibleForCustomization = False
         end
-        object cxGrid1DBTableView1full_name: TcxGridDBColumn
+        object colFullName: TcxGridDBColumn
           DataBinding.FieldName = 'full_name'
           HeaderAlignmentHorz = taCenter
         end
-        object cxGrid1DBTableView1phone_number: TcxGridDBColumn
+        object colPhoneNumber: TcxGridDBColumn
           DataBinding.FieldName = 'phone_number'
           HeaderAlignmentHorz = taCenter
         end
-        object cxGrid1DBTableView1email: TcxGridDBColumn
+        object colEmail: TcxGridDBColumn
           DataBinding.FieldName = 'email'
           HeaderAlignmentHorz = taCenter
           Width = 63
         end
-        object cxGrid1DBTableView1factor: TcxGridDBColumn
+        object colFactor: TcxGridDBColumn
           DataBinding.FieldName = 'factor'
           HeaderAlignmentHorz = taCenter
         end
@@ -57,8 +58,12 @@ inherited fmCustomers: TfmCustomers
     end
   end
   inherited actMain: TActionList
+    object actNewCustomer: TAction
+      Caption = 'New Customer'
+      OnExecute = actNewCustomerExecute
+    end
     object actEditCustomer: TAction
-      Caption = 'actEditCustomer'
+      Caption = 'Edit Customer'
       OnExecute = actEditCustomerExecute
     end
   end
@@ -115,7 +120,7 @@ inherited fmCustomers: TfmCustomers
       WholeRow = False
     end
     object btnAddCustomer: TdxBarButton
-      Action = actEditCustomer
+      Action = actNewCustomer
       Category = 0
       LargeImageIndex = 0
     end
