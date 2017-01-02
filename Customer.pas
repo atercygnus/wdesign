@@ -38,9 +38,12 @@ type
     itmEmail: TdxLayoutItem;
     edtFactor: TcxSpinEdit;
     itmFactor: TdxLayoutItem;
-    edtAttracted: TcxLookupComboBox;
+    edtAttractedThrough: TcxLookupComboBox;
     itmAttractedThrough: TdxLayoutItem;
+    edtAttractedBy: TcxLookupComboBox;
+    itmAttractedBy: TdxLayoutItem;
     procedure actConfirmExecute(Sender: TObject);
+    procedure edtAttractedThroughPropertiesChange(Sender: TObject);
   private
     { Private declarations }
     FCustomerID: Variant;
@@ -72,11 +75,22 @@ begin
       edtPhone.EditText;
     ParamByName('P_FACTOR').Value :=
       edtFactor.EditValue;
+    ParamByName('P_ATTRACTED_THROUGH').Value :=
+      edtAttractedThrough.EditValue;
+    ParamByName('P_ATTRACTED_BY').Value :=
+      edtAttractedBy.EditValue;
     ExecProc;
   end;
   dmMain.dbMain.Commit;
 
   inherited;
+end;
+
+procedure TfmCustomer.edtAttractedThroughPropertiesChange(Sender: TObject);
+begin
+  inherited;
+
+  itmAttractedBy.Visible := edtAttractedThrough.EditValue = 1;
 end;
 
 end.

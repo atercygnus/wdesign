@@ -98,6 +98,17 @@ object dmMain: TdmMain
     object vwCustomersfactor: TFloatField
       FieldName = 'factor'
     end
+    object vwCustomersattracted: TWideMemoField
+      FieldName = 'attracted'
+      BlobType = ftWideMemo
+      Size = 4
+    end
+    object vwCustomersattraction_channel_id: TIntegerField
+      FieldName = 'attraction_channel_id'
+    end
+    object vwCustomersattracted_by_id: TIntegerField
+      FieldName = 'attracted_by_id'
+    end
   end
   object dsCustomers: TDataSource
     DataSet = vwCustomers
@@ -289,49 +300,6 @@ object dmMain: TdmMain
     Left = 496
     Top = 72
   end
-  object stpNewCustomer: TPSQLStoredProc
-    Database = dbMain
-    Options = [dsoUseGUIDField]
-    StoredProcName = 'core.add_customer'
-    Params = <
-      item
-        DataType = ftString
-        Name = 'p_first_name'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftString
-        Name = 'p_last_name'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftString
-        Name = 'p_phone_number'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftString
-        Name = 'p_email'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftFloat
-        Name = 'p_factor'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'p_attracted_through'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftInteger
-        Name = 'p_attracted_by'
-        ParamType = ptInput
-      end>
-    Left = 496
-    Top = 120
-  end
   object tbCustomers: TPSQLTable
     Database = dbMain
     Active = True
@@ -421,7 +389,20 @@ object dmMain: TdmMain
         Name = 'p_attracted_by'
         ParamType = ptInput
       end>
-    Left = 560
-    Top = 136
+    Left = 496
+    Top = 120
+  end
+  object tbAttractionChannels: TPSQLTable
+    Database = dbMain
+    Active = True
+    Options = [dsoUseGUIDField]
+    TableName = '"core"."attraction_channels"'
+    Left = 96
+    Top = 408
+  end
+  object dsAttractionChannels: TDataSource
+    DataSet = tbAttractionChannels
+    Left = 224
+    Top = 408
   end
 end

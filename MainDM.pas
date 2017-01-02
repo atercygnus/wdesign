@@ -55,7 +55,6 @@ type
     vwServicePricesunit_name: TWideStringField;
     stpNewOrderPosition: TPSQLStoredProc;
     vwOrdersaddress: TWideStringField;
-    stpNewCustomer: TPSQLStoredProc;
     tbCustomers: TPSQLTable;
     srcCustomers: TDataSource;
     tbCustomerscustomer_id: TAutoIncField;
@@ -67,6 +66,11 @@ type
     tbCustomersattracted_through: TIntegerField;
     tbCustomersattracted_by: TIntegerField;
     stpMakeCustomer: TPSQLStoredProc;
+    vwCustomersattracted: TWideMemoField;
+    vwCustomersattraction_channel_id: TIntegerField;
+    vwCustomersattracted_by_id: TIntegerField;
+    tbAttractionChannels: TPSQLTable;
+    dsAttractionChannels: TDataSource;
   private
     { Private declarations }
   public

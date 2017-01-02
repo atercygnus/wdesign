@@ -90,7 +90,7 @@ object fmMain: TfmMain
       end
       object viwServicesOrdered: TcxGridDBBandedTableView
         Navigator.Buttons.CustomButtons = <>
-        DataController.DataSource = dmMain.srcServicesOrdered
+        DataController.DataSource = dmMain.dsServicesOrdered
         DataController.DetailKeyFieldNames = 'order_id'
         DataController.KeyFieldNames = 'ord_svc_id'
         DataController.MasterKeyFieldNames = 'order_id'

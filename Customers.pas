@@ -40,6 +40,10 @@ type
     imgMain: TcxImageList;
     actNewCustomer: TAction;
     actEditCustomer: TAction;
+    btnEditCustomer: TdxBarButton;
+    viwLibraryattracted: TcxGridDBColumn;
+    viwLibraryattraction_channel_id: TcxGridDBColumn;
+    viwLibraryattracted_by_id: TcxGridDBColumn;
     procedure actNewCustomerExecute(Sender: TObject);
     procedure actEditCustomerExecute(Sender: TObject);
     procedure viwLibraryCellDblClick(Sender: TcxCustomGridTableView;
@@ -114,6 +118,10 @@ begin
         dmMain.tbCustomers.FieldByName('EMAIL').Value;
       fm.edtFactor.EditValue :=
         dmMain.tbCustomers.FieldByName('FACTOR').Value;
+      fm.edtAttractedThrough.EditValue :=
+        dmMain.tbCustomers.FieldByName('ATTRACTED_THROUGH').Value;
+      fm.edtAttractedBy.EditValue :=
+        dmMain.tbCustomers.FieldByName('ATTRACTED_BY').Value;
       fm.ShowModal;
     finally
       FreeAndNil(fm);

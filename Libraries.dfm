@@ -24,12 +24,20 @@ object fmLibrary: TfmLibrary
       Top = 10
       Width = 919
       Height = 415
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
       object viwLibrary: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
+        OptionsCustomize.ColumnHiding = True
+        OptionsCustomize.ColumnsQuickCustomization = True
         OptionsData.Deleting = False
         OptionsData.Editing = False
         OptionsData.Inserting = False
@@ -60,5 +68,11 @@ object fmLibrary: TfmLibrary
   object actMain: TActionList
     Left = 568
     Top = 176
+  end
+  object pmMain: TcxGridPopupMenu
+    Grid = grdLibrary
+    PopupMenus = <>
+    Left = 568
+    Top = 224
   end
 end

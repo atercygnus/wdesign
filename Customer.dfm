@@ -5,21 +5,21 @@ inherited fmCustomer: TfmCustomer
   TextHeight = 13
   inherited dxLayoutControl1: TdxLayoutControl
     inherited cxButton1: TcxButton
-      Left = 61
-      Top = 172
-      TabOrder = 6
-      ExplicitLeft = 61
-      ExplicitTop = 172
+      Left = 82
+      Top = 199
+      TabOrder = 7
+      ExplicitLeft = 82
+      ExplicitTop = 199
     end
     inherited cxButton2: TcxButton
-      Left = 142
-      Top = 172
-      TabOrder = 7
-      ExplicitLeft = 142
-      ExplicitTop = 172
+      Left = 163
+      Top = 199
+      TabOrder = 8
+      ExplicitLeft = 163
+      ExplicitTop = 199
     end
     object edtFirstName: TcxMaskEdit [2]
-      Left = 72
+      Left = 93
       Top = 10
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '['#1072'-'#1103#1040'-'#1071'a-zA-Z]+'
@@ -30,7 +30,7 @@ inherited fmCustomer: TfmCustomer
       Width = 121
     end
     object edtLastName: TcxMaskEdit [3]
-      Left = 72
+      Left = 93
       Top = 37
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '['#1072'-'#1103#1040'-'#1071'a-zA-Z]+'
@@ -41,7 +41,7 @@ inherited fmCustomer: TfmCustomer
       Width = 121
     end
     object edtPhone: TcxMaskEdit [4]
-      Left = 72
+      Left = 93
       Top = 64
       Properties.MaskKind = emkRegExprEx
       Properties.EditMask = '(\(\d\d\d\))? \d(\d\d?)? - \d\d - \d\d'
@@ -53,7 +53,7 @@ inherited fmCustomer: TfmCustomer
       Width = 121
     end
     object edtEmail: TcxMaskEdit [5]
-      Left = 72
+      Left = 93
       Top = 91
       Properties.MaskKind = emkRegExprEx
       Style.BorderColor = clWindowFrame
@@ -63,7 +63,7 @@ inherited fmCustomer: TfmCustomer
       Width = 121
     end
     object edtFactor: TcxSpinEdit [6]
-      Left = 72
+      Left = 93
       Top = 118
       Properties.AssignedValues.MinValue = True
       Properties.Increment = 0.100000000000000000
@@ -77,16 +77,41 @@ inherited fmCustomer: TfmCustomer
       TabOrder = 4
       Width = 121
     end
-    object edtAttracted: TcxLookupComboBox [7]
-      Left = 72
+    object edtAttractedThrough: TcxLookupComboBox [7]
+      Left = 93
       Top = 145
-      Properties.ListColumns = <>
+      Properties.KeyFieldNames = 'channel_id'
+      Properties.ListColumns = <
+        item
+          FieldName = 'name'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = dmMain.dsAttractionChannels
+      Properties.OnChange = edtAttractedThroughPropertiesChange
       Style.BorderColor = clWindowFrame
       Style.BorderStyle = ebs3D
       Style.HotTrack = False
       Style.ButtonStyle = bts3D
       Style.PopupBorderStyle = epbsFrame3D
       TabOrder = 5
+      Width = 145
+    end
+    object edtAttractedBy: TcxLookupComboBox [8]
+      Left = 93
+      Top = 172
+      Properties.KeyFieldNames = 'customer_id'
+      Properties.ListColumns = <
+        item
+          FieldName = 'full_name'
+        end>
+      Properties.ListOptions.ShowHeader = False
+      Properties.ListSource = dmMain.dsCustomers
+      Style.BorderColor = clWindowFrame
+      Style.BorderStyle = ebs3D
+      Style.HotTrack = False
+      Style.ButtonStyle = bts3D
+      Style.PopupBorderStyle = epbsFrame3D
+      TabOrder = 6
       Width = 145
     end
     inherited dxLayoutControl1Group_Root: TdxLayoutGroup
@@ -97,7 +122,7 @@ inherited fmCustomer: TfmCustomer
       Index = 0
     end
     inherited grpButtons: TdxLayoutGroup
-      Index = 1
+      Index = 2
     end
     inherited dxLayoutItem1: TdxLayoutItem
       Index = 0
@@ -142,10 +167,18 @@ inherited fmCustomer: TfmCustomer
     end
     object itmAttractedThrough: TdxLayoutItem
       Parent = grpControls
-      CaptionOptions.Text = 'Attracted:'
-      Control = edtAttracted
+      CaptionOptions.Text = 'Attracted using:'
+      Control = edtAttractedThrough
       ControlOptions.ShowBorder = False
       Index = 5
+    end
+    object itmAttractedBy: TdxLayoutItem
+      Parent = dxLayoutControl1Group_Root
+      CaptionOptions.Text = 'Attractor:'
+      Visible = False
+      Control = edtAttractedBy
+      ControlOptions.ShowBorder = False
+      Index = 1
     end
   end
   inherited actMain: TActionList

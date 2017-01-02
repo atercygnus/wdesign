@@ -24,7 +24,8 @@ uses
   cxData, cxDataStorage, cxEdit, cxNavigator, Data.DB, cxDBData,
   dxLayoutContainer, cxGridLevel, cxClasses, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid,
-  dxLayoutControl, System.Actions, Vcl.ActnList;
+  dxLayoutControl, System.Actions, Vcl.ActnList, cxGridCustomPopupMenu,
+  cxGridPopupMenu;
 
 type
   TfmLibrary = class(TForm)
@@ -35,6 +36,7 @@ type
     grdLibrary: TcxGrid;
     itmGrid: TdxLayoutItem;
     actMain: TActionList;
+    pmMain: TcxGridPopupMenu;
   private
     { Private declarations }
   public
