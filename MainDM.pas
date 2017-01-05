@@ -71,6 +71,9 @@ type
     vwCustomersattracted_by_id: TIntegerField;
     tbAttractionChannels: TPSQLTable;
     dsAttractionChannels: TDataSource;
+    vwOrderspayed: TFloatField;
+    vwOrdersremains: TFloatField;
+    stpNewPayment: TPSQLStoredProc;
   private
     { Private declarations }
   public

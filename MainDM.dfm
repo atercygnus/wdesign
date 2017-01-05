@@ -4,7 +4,6 @@ object dmMain: TdmMain
   Width = 1067
   object vwOrders: TPSQLTable
     Database = dbMain
-    Active = True
     Options = [dsoUseGUIDField]
     TableName = '"core"."vw_current_orders"'
     UpdateObject = vwUpdateOrders
@@ -41,6 +40,12 @@ object dmMain: TdmMain
     object vwOrderstotal_cost: TFloatField
       DisplayLabel = #1057#1090#1086#1080#1084#1086#1089#1090#1100
       FieldName = 'total_cost'
+    end
+    object vwOrderspayed: TFloatField
+      FieldName = 'payed'
+    end
+    object vwOrdersremains: TFloatField
+      FieldName = 'remains'
     end
   end
   object dbMain: TPSQLDatabase
@@ -404,5 +409,28 @@ object dmMain: TdmMain
     DataSet = tbAttractionChannels
     Left = 224
     Top = 408
+  end
+  object stpNewPayment: TPSQLStoredProc
+    Database = dbMain
+    Options = [dsoUseGUIDField]
+    StoredProcName = 'core.add_payment'
+    Params = <
+      item
+        DataType = ftInteger
+        Name = 'p_amount'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'p_order_id'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'p_date'
+        ParamType = ptInput
+      end>
+    Left = 496
+    Top = 168
   end
 end

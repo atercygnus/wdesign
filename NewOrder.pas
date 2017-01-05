@@ -39,6 +39,7 @@ type
     edtAddress: TcxTextEdit;
     dxLayoutItem7: TdxLayoutItem;
     procedure actConfirmExecute(Sender: TObject);
+    procedure actConfirmUpdate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,6 +75,15 @@ begin
   dmMain.dbMain.Commit;
 
   inherited;
+end;
+
+procedure TfmNewOrder.actConfirmUpdate(Sender: TObject);
+begin
+  inherited;
+
+  TAction(Sender).Enabled := true
+    and (edtCustomer.EditValue <> null)
+    and (edtStatus.EditValue <> null);
 end;
 
 end.

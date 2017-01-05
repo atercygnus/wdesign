@@ -145,5 +145,8 @@ inherited fmNewOrder: TfmNewOrder
   inherited actMain: TActionList
     Left = 176
     Top = 272
+    inherited actConfirm: TAction
+      OnUpdate = actConfirmUpdate
+    end
   end
 end

@@ -9,7 +9,8 @@ uses
   NewOrder in 'NewOrder.pas' {fmNewOrder},
   NewOrderPosition in 'NewOrderPosition.pas' {fmNewOrderPosition},
   Customers in 'Customers.pas' {fmCustomers},
-  Customer in 'Customer.pas' {fmCustomer};
+  Customer in 'Customer.pas' {fmCustomer},
+  Payment in 'Payment.pas' {fmPayment};
 
 {$R *.res}
 
@@ -17,5 +18,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfmMain, fmMain);
+  Application.CreateForm(TfmPayment, fmPayment);
   Application.Run;
 end.

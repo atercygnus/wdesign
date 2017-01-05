@@ -66,10 +66,17 @@ type
     viwOrdersaddress: TcxGridDBColumn;
     actEditCustomers: TAction;
     btnEditCustomers: TdxBarButton;
+    viwOrderspayed: TcxGridDBColumn;
+    viwOrdersremains: TcxGridDBColumn;
+    actNewPayment: TAction;
+    btnPayment: TdxBarButton;
+    actNewCustomer: TAction;
     procedure actNewOrderExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure actNewServiceOrderExecute(Sender: TObject);
     procedure actEditCustomersExecute(Sender: TObject);
+    procedure actNewPaymentExecute(Sender: TObject);
+    procedure actNewCustomerExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,7 +91,7 @@ implementation
 {$R *.dfm}
 
 uses
-  NewOrder, NewOrderPosition, Customers;
+  NewOrder, NewOrderPosition, Customers, Customer, Payment;
 
 procedure TfmMain.actEditCustomersExecute(Sender: TObject);
 var
@@ -98,11 +105,39 @@ begin
   end;
 end;
 
+procedure TfmMain.actNewCustomerExecute(Sender: TObject);
+var
+  fm: TfmCustomer;
+begin
+  fm := TfmCustomer.Create(Self);
+  try
+    fm.ShowModal;
+    if fm.ModalResult = mrOK then
+      dmMain.vwCustomers.Refresh;
+  finally
+    FreeAndNil(fm);
+  end;
+end;
+
 procedure TfmMain.actNewOrderExecute(Sender: TObject);
 var
   fm: TfmNewOrder;
 begin
   fm := TfmNewOrder.Create(Self);
+  try
+    fm.ShowModal;
+    if fm.ModalResult = mrOK then
+      dmMain.vwOrders.Refresh;
+  finally
+    FreeAndNil(fm);
+  end;
+end;
+
+procedure TfmMain.actNewPaymentExecute(Sender: TObject);
+var
+  fm: TfmPayment;
+begin
+  fm := TfmPayment.Create(Self);
   try
     fm.ShowModal;
     if fm.ModalResult = mrOK then
